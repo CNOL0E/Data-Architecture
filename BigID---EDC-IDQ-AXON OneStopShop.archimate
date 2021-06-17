@@ -34,7 +34,21 @@ Policies - are attached to each Axon data-set that specifies the Terms of Use&#x
     <element xsi:type="archimate:ApplicationComponent" name="Enterprise Data Catalog - EDC" id="id-0318c251fd664fa88f0d37e3e5161108">
       <documentation>Enterprise Data Catalog (EDC) primarily &#xD;
  - identifies the types or catagories of data, and&#xD;
- - data lineage</documentation>
+ - data lineage&#xD;
+&#xD;
+Access Management:&#xD;
+&#xD;
+Authentication is SAML based using Microsoft AD&#xD;
+Authorization is Role based and is setup using &quot;Security&quot; console on EDC UI (https://edc-admin-console-uat.cnoinc.com/administrator/)&#xD;
+&#xD;
+User activity is logged under &quot;Audit&quot; console: https://edc-admin-console-uat.cnoinc.com/administrator/#log_UserActivity/ (Under Administration -> User Activity)&#xD;
+&#xD;
+Application logs: Application logs can be found under &quot;Logs&quot; console under &quot;Administrator&quot; (https://edc-admin-console-uat.cnoinc.com/administrator/) There are tabs for &quot;Domain&quot; and &quot;Service&quot;and &quot;Log Aggregator&quot;.&#xD;
+&#xD;
+Node/Service statistics can be viewed under https://edc-admin-console-uat.cnoinc.com/administrator/#admin_Domain. There are tabs for Domain, Services and Nodes, Connections and Schedules. &quot;Services and Nodes&quot; console shows details on various services and details such as properties, Resources, Permissions, Diagnostics, Plugs and Monitoring Configuration.&#xD;
+Monitor console provides real time and historical statistics at Summary and Execution levels (https://edc-admin-console-uat.cnoinc.com/administrator/#monitoring) - Ad Hoc Jobs, Deployed Mappings and Workflows, Requests and Connections and Resource usage. Resource usage shows graphs for CPU usage and Memory usage.&#xD;
+</documentation>
+      <property key="Business Owner" value="??"/>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Application Function 1" id="id-17803b0031954996a27c7026b755c4be"/>
     <element xsi:type="archimate:ApplicationFunction" name="Application Function 2" id="id-843ff24c40754dc8b274e543a4c9914e"/>
@@ -238,7 +252,9 @@ The BIG-IP Application Security Manager (ASM)  is a Layer 7 ICSA-certified Web A
       <property key="FQDN-uat" value="nslookup edc-catalog-uat.cnoinc.com"/>
       <property key="IpAddress-uat" value="10.120.41.19"/>
     </element>
-    <element xsi:type="archimate:Node" name="EDC Services - (Azure) Region - EAST US 2" id="id-afabcf02281d49fe904f22156a06962a"/>
+    <element xsi:type="archimate:Node" name="EDC Services - (Azure) Region - EAST US 2" id="id-afabcf02281d49fe904f22156a06962a">
+      <property key="IT Owner" value="??"/>
+    </element>
     <element xsi:type="archimate:TechnologyService" name="Domain Core Service-6005" id="id-0a7f8bf271474a679d919ab018d868a5">
       <documentation>Purpose: TBD</documentation>
       <property key="TcpPort" value="6005"/>
