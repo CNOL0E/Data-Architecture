@@ -29,6 +29,8 @@ The &quot;usable information&quot; will be published in formal reports in Tablea
 &#xD;
 Policies - are attached to each Axon data-set that specifies the Terms of Use&#xD;
 &#xD;
+Axon business glossary has 800 - 900 elements.&#xD;
+&#xD;
 </documentation>
     </element>
     <element xsi:type="archimate:ApplicationComponent" name="Enterprise Data Catalog - EDC" id="id-0318c251fd664fa88f0d37e3e5161108">
@@ -73,7 +75,7 @@ Therefore &quot;All CNO Source systems&quot; includes both operational (day to d
       <documentation>For example, any data element that fits the patterns 99999, 9999-9999, or 999999999 is a ZipCode</documentation>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Infer Relationships" id="id-8e773ca1f6314e78b5c1c6ad1d6294ed">
-      <documentation>When source systems do not specify foreign key relationships explicitly, they  are inferred by comparing the data values of columns from multiple tables</documentation>
+      <documentation>When source systems do not specify primary or foreign key relationships explicitly, they  are inferred by comparing the data values of columns from multiple tables</documentation>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Identify PII and PHI" id="id-8b7a3d06007c4829a4419ce492f1fcb4">
       <documentation>Identifies data elements that require a high degree of protection:&#xD;
@@ -87,7 +89,8 @@ Includes the MOVEMENT of sensitive data; this is essential when we are required 
  - DATA PROFILING: which provides statistical information of &#xD;
    each data element VALUES, and&#xD;
  - EXCEPTION MANAGEMENT: which identifies bad or suspiciously bad &#xD;
-   data that will require DATA CLEANSING</documentation>
+   data that will require DATA CLEANSING&#xD;
+</documentation>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Data Profiling" id="id-92727d358dad4a0da1c3ddfe4789b7c2">
       <documentation>provides statistical information of each data element VALUES</documentation>
@@ -95,7 +98,7 @@ Includes the MOVEMENT of sensitive data; this is essential when we are required 
     <element xsi:type="archimate:ApplicationFunction" name="Exception Management" id="id-8b960a02da574c1b89a204cc59c4abac">
       <documentation>identifies bad or suspiciously bad data that will require Data Cleansing</documentation>
     </element>
-    <element xsi:type="archimate:ApplicationFunction" name="Business Glossary" id="id-a5edac1ff0c84632bcb0e80369d8163b"/>
+    <element xsi:type="archimate:ApplicationFunction" name="Manage Business Glossary" id="id-a5edac1ff0c84632bcb0e80369d8163b"/>
     <element xsi:type="archimate:ApplicationFunction" name="Natural Language Processor" id="id-7b5ed25a82e84b19b8c5499d73814c68">
       <documentation>To Do:  needs description &amp; connection to _______</documentation>
     </element>
@@ -108,7 +111,11 @@ Includes the MOVEMENT of sensitive data; this is essential when we are required 
 PROD:&#xD;
      https://axon.cnoinc.com:9443/ or&#xD;
      https://lxinfaxonapp01.conseco.ad:9443/&#xD;
-   ToDo: create link to &quot;CNO_Informatica_Axon_User_Access_Guide_PROD.pdf&quot;</documentation>
+   ToDo: create link to &quot;CNO_Informatica_Axon_User_Access_Guide_PROD.pdf&quot;&#xD;
+&#xD;
+Authentication and Authorization: Authentication is done using CNO AD. Authorization is done using LDAP setup (ldapcml.conseco.ad) within Axon (https://axon.cnoinc.com:9443/admin/customizeconfig - LDAP Server). Roles are SuperAdmin, Admin, Webuser (Edit), Webuser (View only).&#xD;
+&#xD;
+Application Logs can be found under: https://axon.cnoinc.com:9443/admin/logs and https://axon.cnoinc.com:9443/admin/audit/view</documentation>
       <property key="TcpPort" value="9443"/>
     </element>
     <element xsi:type="archimate:ApplicationService" name="Admin Console UI-8443" id="id-b29897bb8d054b0198b356df00b6fd06">
@@ -188,6 +195,35 @@ Data Asset Enrichment tab:&#xD;
       <documentation>This is primarily table names, column names and declarative foreign keys.</documentation>
     </element>
     <element xsi:type="archimate:ApplicationService" name="Model Repository Service" id="id-fc07620d234845b8800c6ca1ad7ce1e4"/>
+    <element xsi:type="archimate:ApplicationService" name="Document and manage business glossary" id="id-262b292b6d0446bfa000ab88e6313d40"/>
+    <element xsi:type="archimate:ApplicationService" name="Search and Understand data, it's lineage and relationships" id="id-4e8836f74c86420dad287e38a1b132dd"/>
+    <element xsi:type="archimate:ApplicationFunction" name="Ask a question to data steward/owner" id="id-ca0eb3a32cb648daa4d2af077c567a06">
+      <documentation>Allows Q&amp;A to ask a question and receive responses.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationFunction" name="IDQ Orphaned Foreign keys " id="id-e6ade059a9aa4a8d9c226b790626a141">
+      <documentation>Referential Integrity Analysis: if orphaned records are present, it denotes a violation of foreign key relationship (a corresponding record is not present in parent table).</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="Search and Understand data, it's lineage and relationships" id="id-b0e5010f2af241bcb5dc07ef89c464bd">
+      <documentation>UAT:   https://lxinfedcapm01.conseco.ad:9085/ldmcatalog&#xD;
+PROD:  https://edc-catalog.cnoinc.com:9085/ldmcatalog&#xD;
+&#xD;
+Home Page: &#xD;
+Displays 3 navigation items: Discovery tab, Analytics tab, Resources link&#xD;
+&#xD;
+DISCOVERY tab -- displays the RESOURCES link, which displays our Resources or Connections.  &#xD;
+  - The CNO contractual agreement allows 600 Resources/Connections.&#xD;
+  - .Connection Naming Convention _____________&#xD;
+Click on a Resource/Connection to provide detailed information regarding, such as Tables, Columns, and Relationships&#xD;
+&#xD;
+ANALYTICS tab - Dashboard:&#xD;
+ User Adoption tab:&#xD;
+ - displays metrics regarding aggregate usage&#xD;
+Data Asset Inventory tab:&#xD;
+ - displays information regarding our Resources/Connection&#xD;
+Data Asset Enrichment tab:&#xD;
+ - displays aggregate information regarding Business Terms, Domains, and Data Lineage&#xD;
+</documentation>
+    </element>
   </folder>
   <folder name="Technology &amp; Physical" id="id-a229f09c00eb4147ac34ee02f8cd0c1a" type="technology">
     <element xsi:type="archimate:TechnologyFunction" name="Technology Function 1" id="id-a2305b9ea2f840c5837f301cdaf2f4f0"/>
@@ -821,7 +857,9 @@ https://lxinfedcapp02.conseco.ad:9085/ldmadmin (Secondary- EDC Node02)</document
     </element>
     <element xsi:type="archimate:TechnologyService" name="Azure Cloud - Virtual Network" id="id-291dbde0884c4126a73b7f9a67aaa423"/>
     <element xsi:type="archimate:TechnologyCollaboration" name="Technology Collaboration" id="id-9bd2e6ecf7ca42afba93066a27830c34"/>
-    <element xsi:type="archimate:TechnologyCollaboration" name="Azure Cloud - Virtual Network" id="id-65e316020b694ca39a2321f72075b417"/>
+    <element xsi:type="archimate:TechnologyCollaboration" name="Azure Cloud - Virtual Network" id="id-65e316020b694ca39a2321f72075b417">
+      <property key="Azure Resource Group" value="rg-ccpa-prod-eu2"/>
+    </element>
     <element xsi:type="archimate:TechnologyService" name="Model Repository Service" id="id-fb4b558a2827484ba682df5b295dc934">
       <documentation>Purpose: The Model Repository Service is an application service that manages model repository that stores metadata created by the Enterprise Data Catalog. MRS stores the underlying contents in a relational database to enable collaboration among the tools and services. Model repository primarily stores the resource configuration and data domain information. When you access a Model repository object from the Enterprise Data Catalog tools or the Data Integration Service, the client or service sends a request to the Model Repository Service. The Model Repository Service process fetches, inserts, and updates the metadata in the Model repository database tables.</documentation>
       <property key="TcpPort" value="9485"/>
@@ -850,8 +888,8 @@ MRS stores all the configuration and connectivity information for EDC resources.
   <folder name="Other" id="id-4ce429c5ac824364a64d38e231492a30" type="other"/>
   <folder name="Relations" id="id-dfa2a432781645e1ae47d84c378df04e" type="relations">
     <element xsi:type="archimate:ServingRelationship" id="id-266a1c7734b84dc9a5bf0b5ba87fe633" source="id-a51d03a6710b416ebd6f2cf9c94c57ef" target="id-061ca94c29be4d82bb50078d9c7eaf3b"/>
-    <element xsi:type="archimate:ServingRelationship" id="id-c3e4c096470f410299ced42a393ea474" source="id-a51d03a6710b416ebd6f2cf9c94c57ef" target="id-34443813757b44e9bcec2fb2263cd018"/>
-    <element xsi:type="archimate:ServingRelationship" id="id-7d134e59a2fc4a67843473f5aab015c7" source="id-f721b29a47d14539b00a4fc0ef887fbb" target="id-a8f4316d226b466bb3c7f1b30631dce8"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-c3e4c096470f410299ced42a393ea474" source="id-a51d03a6710b416ebd6f2cf9c94c57ef" target="id-262b292b6d0446bfa000ab88e6313d40"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-7d134e59a2fc4a67843473f5aab015c7" source="id-0318c251fd664fa88f0d37e3e5161108" target="id-a8f4316d226b466bb3c7f1b30631dce8"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-4d3c57dcd2d54c6f8d332a341364803e" source="id-34443813757b44e9bcec2fb2263cd018" target="id-97e72bd9e96d415abde9d5f3ae04aba8"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-d92f4268e3dd414f80865fa3dd62a595" source="id-061ca94c29be4d82bb50078d9c7eaf3b" target="id-97e72bd9e96d415abde9d5f3ae04aba8"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-7c95b193c31e482a923c5edc0e88e4ac" source="id-a8f4316d226b466bb3c7f1b30631dce8" target="id-97e72bd9e96d415abde9d5f3ae04aba8"/>
@@ -970,6 +1008,16 @@ Cameron: How is a resource related to a connection??</documentation>
     <element xsi:type="archimate:RealizationRelationship" id="id-a44e09826259422f830d0e6d96ecd19b" source="id-4a06d6db0da3452aaa1533f9949ab025" target="id-af46fea7a5a04571bc6c51365917ac14"/>
     <element xsi:type="archimate:ServingRelationship" id="id-3bde87870eb840309b04e93b573b32bd" source="id-fc07620d234845b8800c6ca1ad7ce1e4" target="id-97fdc45a3b8a4e239d2444c462083cc6"/>
     <element xsi:type="archimate:ServingRelationship" id="id-e0b335540de747f883e13ebd54ab2705" source="id-fc07620d234845b8800c6ca1ad7ce1e4" target="id-fb4b558a2827484ba682df5b295dc934"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-2ef7bb4bff1c410a87e48c689db135da" source="id-cb83200637304df9bade2fc2c3875aa2" target="id-262b292b6d0446bfa000ab88e6313d40"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-2e0b4ec8c0e141e1962d4f2b1044a3c8" source="id-cb83200637304df9bade2fc2c3875aa2" target="id-34443813757b44e9bcec2fb2263cd018"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-854d748ccef245bdb8c46ddeb5a28534" source="id-0318c251fd664fa88f0d37e3e5161108" target="id-4e8836f74c86420dad287e38a1b132dd"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-25425d7fad1d48319a1b5118ace6cca9" source="id-0318c251fd664fa88f0d37e3e5161108" target="id-061ca94c29be4d82bb50078d9c7eaf3b"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-9f0c07d7548b468bab7afe01613685f6" source="id-0318c251fd664fa88f0d37e3e5161108" target="id-34443813757b44e9bcec2fb2263cd018"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-1e1831f134454199b38dd7662cbffe56" source="id-cab99a7a2333447ca8dbc1c76fa957e9" target="id-4e8836f74c86420dad287e38a1b132dd"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-5a8a9ac2a7be4d24a518a9761d9186e1" source="id-cb83200637304df9bade2fc2c3875aa2" target="id-061ca94c29be4d82bb50078d9c7eaf3b"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-cc3588cb57084396aad4fb9b3b6b2371" source="id-cb83200637304df9bade2fc2c3875aa2" target="id-ca0eb3a32cb648daa4d2af077c567a06"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-23630fc8cf6249dab43c036966a39047" source="id-cab99a7a2333447ca8dbc1c76fa957e9" target="id-e6ade059a9aa4a8d9c226b790626a141"/>
+    <element xsi:type="archimate:CompositionRelationship" id="id-0a3e21acd2f3494da91a5a70acb9f265" source="id-b0e5010f2af241bcb5dc07ef89c464bd" target="id-f721b29a47d14539b00a4fc0ef887fbb"/>
   </folder>
   <folder name="Views" id="id-6b8e5ecf4c5f4f9e985e906c0f7baab7" type="diagrams">
     <element xsi:type="archimate:ArchimateDiagramModel" name="EDC-IDQ-AXON Main View" id="id-e0f8f1b076354dc29c0095cf79627365">
@@ -1095,14 +1143,14 @@ Cameron: How is a resource related to a connection??</documentation>
           </child>
         </child>
       </child>
-      <child xsi:type="archimate:DiagramObject" id="id-f39df5e664d44380b5912c5dbeac9976" targetConnections="id-08398129eeaa4a3e9fbff329ce62dc19" archimateElement="id-061ca94c29be4d82bb50078d9c7eaf3b">
-        <bounds x="1210" y="400" width="120" height="55"/>
+      <child xsi:type="archimate:DiagramObject" id="id-f39df5e664d44380b5912c5dbeac9976" targetConnections="id-5aa1d06efb6c4362bbf2600e57dc3738 id-655a931d720c43ff83e0d4febbb9dfe9" archimateElement="id-061ca94c29be4d82bb50078d9c7eaf3b">
+        <bounds x="1183" y="360" width="120" height="55"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-169f9b8125fc45ccbfa3de8adec80cc9" source="id-f39df5e664d44380b5912c5dbeac9976" target="id-4bb04614f2d94eb48b991fa0a1773b8d" archimateRelationship="id-d92f4268e3dd414f80865fa3dd62a595">
           <feature name="labelExpression" value="Realizes"/>
         </sourceConnection>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-c636c7b30f2a417eb589dbbcce198176" targetConnections="id-5ec01c51f0c348cfb0cf0bdf62a57d53" archimateElement="id-cb83200637304df9bade2fc2c3875aa2">
-        <bounds x="1620" y="696" width="331" height="169"/>
+        <bounds x="1740" y="774" width="331" height="169"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-331b265ab4da4b89822470ddaecd9967" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-0d34de5447034ef2b67bb54297795082" archimateRelationship="id-003afdcea3ca4e21b2e6ca7795dcf303"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-262f263974404566a684ebc5c34744a3" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-64e849ef5dff4d9fb21e580d763ef413" archimateRelationship="id-eb6d1095b7794780bf9a86a8ae81c6ea"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-d389fa19ebd7499aa908353892452c9e" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-baa4fde84e5540768fd674d24012fc2e" archimateRelationship="id-b4c1a85b9242440888ba1df339e162e2">
@@ -1110,8 +1158,17 @@ Cameron: How is a resource related to a connection??</documentation>
           <bendpoint startX="-276" startY="-108" endX="150" endY="96"/>
         </sourceConnection>
         <sourceConnection xsi:type="archimate:Connection" id="id-24f90965b856437c9ae911e2e1bc2bcf" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-1260d941f4ed4cce810d51fc89d56f8b" archimateRelationship="id-fbd177c05db7407caad0865219861ebe"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-922219294dd04e14b4ac885600bd849f" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-057c748014f943b9b4d062798ed535dd" archimateRelationship="id-cc3588cb57084396aad4fb9b3b6b2371"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-655a931d720c43ff83e0d4febbb9dfe9" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-f39df5e664d44380b5912c5dbeac9976" archimateRelationship="id-5a8a9ac2a7be4d24a518a9761d9186e1">
+          <feature name="labelExpression" value="Serves"/>
+          <bendpoint startX="-21" startY="-294" endX="641" endY="177"/>
+        </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-c01a9ba745c545cc9062d3aa94457521" source="id-c636c7b30f2a417eb589dbbcce198176" target="id-8731c7bbdca247509a574851156fe002" archimateRelationship="id-2e0b4ec8c0e141e1962d4f2b1044a3c8">
+          <feature name="labelExpression" value="Serves"/>
+          <bendpoint startX="3" startY="-318" endX="384" endY="153"/>
+        </sourceConnection>
         <child xsi:type="archimate:DiagramObject" id="id-0d34de5447034ef2b67bb54297795082" targetConnections="id-331b265ab4da4b89822470ddaecd9967" archimateElement="id-a5edac1ff0c84632bcb0e80369d8163b">
-          <bounds x="175" y="36" width="109" height="49"/>
+          <bounds x="175" y="24" width="109" height="61"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-e9571d7ca26b49ed9a9ac675de5e1ad7" source="id-0d34de5447034ef2b67bb54297795082" target="id-1260d941f4ed4cce810d51fc89d56f8b" archimateRelationship="id-bc2b0d7af6c24e9eb2f03646f975a015">
             <feature name="labelExpression" value="Flows To"/>
           </sourceConnection>
@@ -1121,24 +1178,19 @@ Cameron: How is a resource related to a connection??</documentation>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-1260d941f4ed4cce810d51fc89d56f8b" targetConnections="id-24f90965b856437c9ae911e2e1bc2bcf id-e9571d7ca26b49ed9a9ac675de5e1ad7 id-b6d5f44d74d94c2a94859171f366b20f" archimateElement="id-a51d03a6710b416ebd6f2cf9c94c57ef">
           <bounds x="23" y="36" width="85" height="25"/>
-          <sourceConnection xsi:type="archimate:Connection" id="id-427b9dcc0c1a431d8e05139ed7d93e81" source="id-1260d941f4ed4cce810d51fc89d56f8b" target="id-8731c7bbdca247509a574851156fe002" archimateRelationship="id-c3e4c096470f410299ced42a393ea474">
-            <feature name="labelExpression" value="Serves"/>
-            <bendpoint startX="66" startY="-144" endX="84" endY="177"/>
-          </sourceConnection>
-          <sourceConnection xsi:type="archimate:Connection" id="id-08398129eeaa4a3e9fbff329ce62dc19" source="id-1260d941f4ed4cce810d51fc89d56f8b" target="id-f39df5e664d44380b5912c5dbeac9976" archimateRelationship="id-266a1c7734b84dc9a5bf0b5ba87fe633">
-            <feature name="labelExpression" value="Serves"/>
-            <bendpoint startX="-66" startY="-198" endX="180" endY="141"/>
-          </sourceConnection>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="id-057c748014f943b9b4d062798ed535dd" targetConnections="id-922219294dd04e14b4ac885600bd849f" archimateElement="id-ca0eb3a32cb648daa4d2af077c567a06">
+          <bounds x="23" y="84" width="122" height="61"/>
         </child>
       </child>
-      <child xsi:type="archimate:DiagramObject" id="id-8731c7bbdca247509a574851156fe002" targetConnections="id-427b9dcc0c1a431d8e05139ed7d93e81" archimateElement="id-34443813757b44e9bcec2fb2263cd018">
-        <bounds x="1438" y="376" width="120" height="55"/>
+      <child xsi:type="archimate:DiagramObject" id="id-8731c7bbdca247509a574851156fe002" targetConnections="id-a50f78bc6cd941838b1147a66b1c99ce id-c01a9ba745c545cc9062d3aa94457521" archimateElement="id-34443813757b44e9bcec2fb2263cd018">
+        <bounds x="1464" y="360" width="120" height="55"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-661ae0248d394c7faa2d3aaae302137a" source="id-8731c7bbdca247509a574851156fe002" target="id-4bb04614f2d94eb48b991fa0a1773b8d" archimateRelationship="id-4d3c57dcd2d54c6f8d332a341364803e">
           <feature name="labelExpression" value="Realizes"/>
         </sourceConnection>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-e15cc07739524de7937fc5057409d822" targetConnections="id-8627e178de354193b2d9c045366663c0 id-39232c7a7be34ff8b2decfabb2ea484b" archimateElement="id-0318c251fd664fa88f0d37e3e5161108">
-        <bounds x="862" y="664" width="455" height="301"/>
+        <bounds x="818" y="672" width="455" height="301"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-8e363ebf27be4e2fa0e7e171f208e40d" source="id-e15cc07739524de7937fc5057409d822" target="id-074b16391ca44a5f80fad0ca6ea81068" archimateRelationship="id-290ab84c899c43abbd08f1a28b9d0578"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-36b7fa2350214ee884097780675ad8c1" source="id-e15cc07739524de7937fc5057409d822" target="id-567a038cf2c147c2ae0e8f5b9942440e" archimateRelationship="id-4e0be14c9413488d9aef8a2f96b3e87c"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-e7f1c464ac4043a0b30c5f8ea3b1e1b3" source="id-e15cc07739524de7937fc5057409d822" target="id-9932401e720f49a1897d3af368ed2d40" archimateRelationship="id-a71c0097168e4955b4b8c64d6cf57538"/>
@@ -1149,6 +1201,14 @@ Cameron: How is a resource related to a connection??</documentation>
         </sourceConnection>
         <sourceConnection xsi:type="archimate:Connection" id="id-1cc9b1427800416d8d1f8f3bbb2cb047" source="id-e15cc07739524de7937fc5057409d822" target="id-b1093cc7983b4aaa9270f86de4f8c255" archimateRelationship="id-ed8b7ef81d4341e78633d976c3086566"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-31c5b79f1b8447c98d0d23fb9ca8378c" source="id-e15cc07739524de7937fc5057409d822" target="id-0e8f61fe87464a9ca1fb1c0a82a2d1fb" archimateRelationship="id-a144556d7526466ba86fadf01ec50ed5"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-f1debb7661324dc18109fc5c4968be98" source="id-e15cc07739524de7937fc5057409d822" target="id-3f26ffbd406740889ae890c4eecc62e5" archimateRelationship="id-7d134e59a2fc4a67843473f5aab015c7">
+          <feature name="labelExpression" value="Serves"/>
+          <bendpoint startX="-6" startY="-188" endX="14" endY="131"/>
+        </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-5aa1d06efb6c4362bbf2600e57dc3738" source="id-e15cc07739524de7937fc5057409d822" target="id-f39df5e664d44380b5912c5dbeac9976" archimateRelationship="id-25425d7fad1d48319a1b5118ace6cca9">
+          <feature name="labelExpression" value="Serves"/>
+        </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-a50f78bc6cd941838b1147a66b1c99ce" source="id-e15cc07739524de7937fc5057409d822" target="id-8731c7bbdca247509a574851156fe002" archimateRelationship="id-9f0c07d7548b468bab7afe01613685f6"/>
         <child xsi:type="archimate:DiagramObject" id="id-074b16391ca44a5f80fad0ca6ea81068" targetConnections="id-8e363ebf27be4e2fa0e7e171f208e40d" archimateElement="id-035492aa093c4dc88ad59df78255829a">
           <bounds x="267" y="135" width="168" height="24"/>
         </child>
@@ -1161,12 +1221,9 @@ Cameron: How is a resource related to a connection??</documentation>
         <child xsi:type="archimate:DiagramObject" id="id-7d571ad1a8694b5782fa32babe83430e" targetConnections="id-cae66972d31d4c12b910a735a9194f2a" archimateElement="id-8b7a3d06007c4829a4419ce492f1fcb4">
           <bounds x="267" y="231" width="168" height="24"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="id-b1093cc7983b4aaa9270f86de4f8c255" targetConnections="id-1cc9b1427800416d8d1f8f3bbb2cb047 id-70e43035c71f47019bbfb4c90c5e325e id-7a912f4d37bc451188815ceaf14948e5 id-810fea6970ef45ab9d244d1653cd99b1" archimateElement="id-f721b29a47d14539b00a4fc0ef887fbb">
-          <bounds x="23" y="35" width="226" height="163"/>
+        <child xsi:type="archimate:DiagramObject" id="id-b1093cc7983b4aaa9270f86de4f8c255" targetConnections="id-1cc9b1427800416d8d1f8f3bbb2cb047 id-70e43035c71f47019bbfb4c90c5e325e id-7a912f4d37bc451188815ceaf14948e5 id-810fea6970ef45ab9d244d1653cd99b1 id-6fea8a5bcb744939a6ae4645c6fb3ba4" archimateElement="id-f721b29a47d14539b00a4fc0ef887fbb">
+          <bounds x="24" y="37" width="226" height="254"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-ab3c0958adcb481ba3ddba8616c72eec" source="id-b1093cc7983b4aaa9270f86de4f8c255" target="id-00b3b289e3b04fc7aef3e557441ae677" archimateRelationship="id-4a9dedc75fcd43b9946301106417ae56"/>
-          <sourceConnection xsi:type="archimate:Connection" id="id-f1debb7661324dc18109fc5c4968be98" source="id-b1093cc7983b4aaa9270f86de4f8c255" target="id-3f26ffbd406740889ae890c4eecc62e5" archimateRelationship="id-7d134e59a2fc4a67843473f5aab015c7">
-            <feature name="labelExpression" value="Serves"/>
-          </sourceConnection>
           <sourceConnection xsi:type="archimate:Connection" id="id-ba2ca719ce5b447c8a4f2aadeb082157" source="id-b1093cc7983b4aaa9270f86de4f8c255" target="id-97a44fa57e2c4cc2ac9aabe0b3689f1b" archimateRelationship="id-040f68db16894d62b594e550604c462b"/>
           <child xsi:type="archimate:DiagramObject" id="id-00b3b289e3b04fc7aef3e557441ae677" targetConnections="id-ab3c0958adcb481ba3ddba8616c72eec id-82bff4012168407db7506a1f916905da" archimateElement="id-b29897bb8d054b0198b356df00b6fd06">
             <bounds x="13" y="25" width="182" height="24"/>
@@ -1179,19 +1236,23 @@ Cameron: How is a resource related to a connection??</documentation>
             <bounds x="13" y="108" width="181" height="30"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-810fea6970ef45ab9d244d1653cd99b1" source="id-a9df0d9781da46a5b6e3a78eb39d9a39" target="id-b1093cc7983b4aaa9270f86de4f8c255" archimateRelationship="id-7f60c47e1ee64342a60cbf0b71219f01"/>
           </child>
+          <child xsi:type="archimate:DiagramObject" id="id-f17df0849abb4fa8a92852505c1ac2f5" archimateElement="id-b0e5010f2af241bcb5dc07ef89c464bd">
+            <bounds x="13" y="156" width="181" height="61"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-6fea8a5bcb744939a6ae4645c6fb3ba4" source="id-f17df0849abb4fa8a92852505c1ac2f5" target="id-b1093cc7983b4aaa9270f86de4f8c255" archimateRelationship="id-0a3e21acd2f3494da91a5a70acb9f265"/>
+          </child>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-0e8f61fe87464a9ca1fb1c0a82a2d1fb" targetConnections="id-31c5b79f1b8447c98d0d23fb9ca8378c" archimateElement="id-d379f600687d483a855775499ab53f0d">
           <bounds x="267" y="104" width="166" height="25"/>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-3f26ffbd406740889ae890c4eecc62e5" targetConnections="id-f1debb7661324dc18109fc5c4968be98" archimateElement="id-a8f4316d226b466bb3c7f1b30631dce8">
-        <bounds x="874" y="442" width="120" height="55"/>
+        <bounds x="900" y="360" width="120" height="55"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-87d6fdfab2cf4f6bbe01d5ce9de2d4cc" source="id-3f26ffbd406740889ae890c4eecc62e5" target="id-4bb04614f2d94eb48b991fa0a1773b8d" archimateRelationship="id-7c95b193c31e482a923c5edc0e88e4ac">
           <feature name="labelExpression" value="Realizes"/>
         </sourceConnection>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-4bb04614f2d94eb48b991fa0a1773b8d" targetConnections="id-661ae0248d394c7faa2d3aaae302137a id-169f9b8125fc45ccbfa3de8adec80cc9 id-87d6fdfab2cf4f6bbe01d5ce9de2d4cc" archimateElement="id-97e72bd9e96d415abde9d5f3ae04aba8">
-        <bounds x="1114" y="244" width="277" height="55"/>
+        <bounds x="1104" y="160" width="277" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-8c3a81ca2c8f4941b0a2ec39bd06d6fa" targetConnections="id-28eb68a768ff4055848b4a4993cafe9c id-abc9bb692f3a413f82905b505dfb3e97 id-d734f01dfc9f498ca674938eb0a90363" archimateElement="id-97fdc45a3b8a4e239d2444c462083cc6">
         <bounds x="616" y="729" width="97" height="61"/>
@@ -1217,18 +1278,22 @@ Epsilon</content>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-b59be3028c0e476fa01a7a88d00ceaa1" targetConnections="id-18a70cf70b824cb1b98cbac144876481 id-84b01b965c7c4daaaa75dbaa946cd905" archimateElement="id-cab99a7a2333447ca8dbc1c76fa957e9">
-        <bounds x="1344" y="707" width="205" height="181"/>
+        <bounds x="1395" y="762" width="205" height="181"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-2d188e4afec648749431c346fea5d6b8" source="id-b59be3028c0e476fa01a7a88d00ceaa1" target="id-b95f85179c1c40a3815c765e89397d53" archimateRelationship="id-f4f179976afa4dc1b26828089d5d9f22"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-6fce46e78dbc4555abc85a4504e90e70" source="id-b59be3028c0e476fa01a7a88d00ceaa1" target="id-d6ae60877b3f4300861d12e677e99d96" archimateRelationship="id-768155ff04ee4dabb175f26c021ed7cb"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-30d374e9ea734af390d27c96ca9c3ab6" source="id-b59be3028c0e476fa01a7a88d00ceaa1" target="id-baa4fde84e5540768fd674d24012fc2e" archimateRelationship="id-327e08e578da4f51a5bad34f26bf2658">
           <feature name="labelExpression" value="Flows To"/>
           <bendpoint startX="9" startY="-128" endX="45" endY="82"/>
         </sourceConnection>
+        <sourceConnection xsi:type="archimate:Connection" id="id-350f8317523c4571a67b820175861ab4" source="id-b59be3028c0e476fa01a7a88d00ceaa1" target="id-3ef2d0f7162140c9bc0608b54b5afb0a" archimateRelationship="id-23630fc8cf6249dab43c036966a39047"/>
         <child xsi:type="archimate:DiagramObject" id="id-b95f85179c1c40a3815c765e89397d53" targetConnections="id-2d188e4afec648749431c346fea5d6b8" archimateElement="id-92727d358dad4a0da1c3ddfe4789b7c2">
           <bounds x="36" y="36" width="133" height="25"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-d6ae60877b3f4300861d12e677e99d96" targetConnections="id-6fce46e78dbc4555abc85a4504e90e70" archimateElement="id-8b960a02da574c1b89a204cc59c4abac">
           <bounds x="36" y="72" width="133" height="37"/>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="id-3ef2d0f7162140c9bc0608b54b5afb0a" targetConnections="id-350f8317523c4571a67b820175861ab4" archimateElement="id-e6ade059a9aa4a8d9c226b790626a141">
+          <bounds x="36" y="120" width="133" height="37"/>
         </child>
       </child>
       <child xsi:type="archimate:Note" id="id-579c171a89e1490a9ef4b5c62d7f66f5" font="1|Verdana|16.0|0|WINDOWS|1|-32|0|0|0|400|0|0|0|0|3|2|1|34|Verdana" textAlignment="1">
@@ -1246,7 +1311,7 @@ Docs integrated into this diagram:&#xD;
   - CNO_Informatica_Data Governance_Azure_Server Sizing_v2.3.xlsx</content>
       </child>
       <child xsi:type="archimate:Note" id="id-bd05500e78194d1582f46acf728b9d18" font="1|Verdana|16.0|0|WINDOWS|1|-32|0|0|0|400|0|0|0|0|3|2|1|34|Verdana" textAlignment="1">
-        <bounds x="2014" y="166" width="906" height="795"/>
+        <bounds x="2135" y="160" width="906" height="795"/>
         <content>Outstanding Issues:&#xD;
 &#xD;
 ALL NETWORK TRAFFIC  must be encrypted to comply with ZERO TRUST NETWORKING principles&#xD;
@@ -1293,10 +1358,11 @@ One Stop Shop</content>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-baa4fde84e5540768fd674d24012fc2e" targetConnections="id-c906b8a223b94377ac7ee3fcfa8f39f0 id-30d374e9ea734af390d27c96ca9c3ab6 id-d389fa19ebd7499aa908353892452c9e" archimateElement="id-40c42527b35a4985807953f3d2526e66">
-        <bounds x="1291" y="532" width="132" height="72"/>
+        <bounds x="1492" y="636" width="132" height="72"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-5ec01c51f0c348cfb0cf0bdf62a57d53" source="id-baa4fde84e5540768fd674d24012fc2e" target="id-c636c7b30f2a417eb589dbbcce198176" archimateRelationship="id-891595acd74847679dfacd7829726ee2">
           <feature name="labelExpression" value="Flows To"/>
           <bendpoint startX="186" startY="60" endX="-240" endY="-144"/>
+          <bendpoint startX="503" startY="128" endX="-117" endY="-162"/>
         </sourceConnection>
         <sourceConnection xsi:type="archimate:Connection" id="id-39232c7a7be34ff8b2decfabb2ea484b" source="id-baa4fde84e5540768fd674d24012fc2e" target="id-e15cc07739524de7937fc5057409d822" archimateRelationship="id-e985a9a9c3d845338f8e332a76005052">
           <feature name="labelExpression" value="Flows To"/>
@@ -1365,12 +1431,6 @@ Network&#xD;
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-3d7a012882634533acdb41e037560235" archimateElement="id-8a9e66ccba4d47088f3c99a48f6ad996">
         <bounds x="106" y="984" width="120" height="55"/>
-      </child>
-      <child xsi:type="archimate:DiagramObject" id="id-7e780d4e6b65433b80a1e546312c81b3" archimateElement="id-9399c6dbd8fd4a2992dec19dbfd5b1c4">
-        <bounds x="46" y="1210" width="207" height="63"/>
-        <child xsi:type="archimate:DiagramObject" id="id-459f0769e6cf4203953ab5027ccbd4be" archimateElement="id-6db6c65de4a44e44b7726112c054c21b">
-          <bounds x="12" y="24" width="181" height="25"/>
-        </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-794baacf8fde47ea8048d780d11ae2ae" targetConnections="id-0252bab879154513af719ad76f923bdc" archimateElement="id-0b88456a80ce489ebe4d4a798529f67d">
         <bounds x="672" y="2112" width="1008" height="537"/>
