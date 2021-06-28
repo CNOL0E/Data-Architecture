@@ -1221,7 +1221,7 @@ Cameron: How is a resource related to a connection??</documentation>
         <child xsi:type="archimate:DiagramObject" id="id-7d571ad1a8694b5782fa32babe83430e" targetConnections="id-cae66972d31d4c12b910a735a9194f2a" archimateElement="id-8b7a3d06007c4829a4419ce492f1fcb4">
           <bounds x="267" y="231" width="168" height="24"/>
         </child>
-        <child xsi:type="archimate:DiagramObject" id="id-b1093cc7983b4aaa9270f86de4f8c255" targetConnections="id-1cc9b1427800416d8d1f8f3bbb2cb047 id-70e43035c71f47019bbfb4c90c5e325e id-7a912f4d37bc451188815ceaf14948e5 id-810fea6970ef45ab9d244d1653cd99b1 id-6fea8a5bcb744939a6ae4645c6fb3ba4" archimateElement="id-f721b29a47d14539b00a4fc0ef887fbb">
+        <child xsi:type="archimate:DiagramObject" id="id-b1093cc7983b4aaa9270f86de4f8c255" targetConnections="id-1cc9b1427800416d8d1f8f3bbb2cb047 id-70e43035c71f47019bbfb4c90c5e325e id-7a912f4d37bc451188815ceaf14948e5 id-810fea6970ef45ab9d244d1653cd99b1" archimateElement="id-f721b29a47d14539b00a4fc0ef887fbb">
           <bounds x="24" y="37" width="226" height="254"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-ab3c0958adcb481ba3ddba8616c72eec" source="id-b1093cc7983b4aaa9270f86de4f8c255" target="id-00b3b289e3b04fc7aef3e557441ae677" archimateRelationship="id-4a9dedc75fcd43b9946301106417ae56"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-ba2ca719ce5b447c8a4f2aadeb082157" source="id-b1093cc7983b4aaa9270f86de4f8c255" target="id-97a44fa57e2c4cc2ac9aabe0b3689f1b" archimateRelationship="id-040f68db16894d62b594e550604c462b"/>
@@ -1236,13 +1236,13 @@ Cameron: How is a resource related to a connection??</documentation>
             <bounds x="13" y="108" width="181" height="30"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-810fea6970ef45ab9d244d1653cd99b1" source="id-a9df0d9781da46a5b6e3a78eb39d9a39" target="id-b1093cc7983b4aaa9270f86de4f8c255" archimateRelationship="id-7f60c47e1ee64342a60cbf0b71219f01"/>
           </child>
-          <child xsi:type="archimate:DiagramObject" id="id-f17df0849abb4fa8a92852505c1ac2f5" archimateElement="id-b0e5010f2af241bcb5dc07ef89c464bd">
-            <bounds x="13" y="156" width="181" height="61"/>
-            <sourceConnection xsi:type="archimate:Connection" id="id-6fea8a5bcb744939a6ae4645c6fb3ba4" source="id-f17df0849abb4fa8a92852505c1ac2f5" target="id-b1093cc7983b4aaa9270f86de4f8c255" archimateRelationship="id-0a3e21acd2f3494da91a5a70acb9f265"/>
-          </child>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-0e8f61fe87464a9ca1fb1c0a82a2d1fb" targetConnections="id-31c5b79f1b8447c98d0d23fb9ca8378c" archimateElement="id-d379f600687d483a855775499ab53f0d">
           <bounds x="267" y="104" width="166" height="25"/>
+        </child>
+        <child xsi:type="archimate:Note" id="id-807f7bbe0a644b68b13a8307db331c7e" textAlignment="1">
+          <bounds x="267" y="25" width="168" height="60"/>
+          <content>Search and Understand data, it's lineage and relationships</content>
         </child>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-3f26ffbd406740889ae890c4eecc62e5" targetConnections="id-f1debb7661324dc18109fc5c4968be98" archimateElement="id-a8f4316d226b466bb3c7f1b30631dce8">
